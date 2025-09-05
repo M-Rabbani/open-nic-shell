@@ -174,7 +174,7 @@ module packet_filter_250 #(
     .s_axis_tuser_size (s_axis_adap_rx_250mhz_tuser_size),
     .s_axis_tuser_src  (s_axis_adap_rx_250mhz_tuser_src),
     .s_axis_tuser_dst  (s_axis_adap_rx_250mhz_tuser_dst),
-    .s_axis_tready     (),                                      //unused, so keep emmpty?
+    .s_axis_tready     (s_axis_adap_rx_250mhz_tready[0]),      //potential conflict with headerpeek, so keep emmpty? 
 
     .decision_valid(header_valid),
     .decision_allow(allow),
@@ -186,7 +186,7 @@ module packet_filter_250 #(
     .m_axis_tuser_size (m_axis_adap_tx_250mhz_tuser_size),
     .m_axis_tuser_src  (m_axis_adap_tx_250mhz_tuser_src),
     .m_axis_tuser_dst  (m_axis_adap_tx_250mhz_tuser_dst),
-    .m_axis_tready     (m_axis_adap_tx_250mhz_tready[0]),      //tready signal we use/assert
+    .m_axis_tready     (m_axis_adap_tx_250mhz_tready[0]),      //tready signal we read from
 
     .cnt_in(), .cnt_pass(), .cnt_drop()
   );
