@@ -69,10 +69,10 @@ module axis_packet_gate #(
         IDLE: begin
           // accept new packet only when decision_valid; otherwise stall upstream
           s_axis_tready <= decision_valid;
-          if (s_axis_tvalid && s_axis_tready && decision_valid) begin
+          if (s_axis_tvalid && (s_axis_tready || decision_valid)) begin
             cnt_in <= cnt_in + 1;
             allow_latched <= decision_allow;
-            if (decision_allow) begin                         // FORWARDING
+            if (decision_allow || allow_latched) begin                         // FORWARDING
               // attempt to forward beat
               if (m_axis_tready) begin
                 m_axis_tvalid <= 1'b1;

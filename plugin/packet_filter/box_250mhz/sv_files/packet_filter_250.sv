@@ -46,7 +46,7 @@ module packet_filter_250 #(
   output  [16*NUM_CMAC_PORT-1:0] m_axis_adap_tx_250mhz_tuser_size,
   output  [16*NUM_CMAC_PORT-1:0] m_axis_adap_tx_250mhz_tuser_src,
   output  [16*NUM_CMAC_PORT-1:0] m_axis_adap_tx_250mhz_tuser_dst,
-  input      [NUM_CMAC_PORT-1:0] m_axis_adap_tx_250mhz_tready,
+  input      [NUM_CMAC_PORT-1:0] m_axis_adap_tx_250mhz_tready
 );
 
   // internal register outputs (cross-clock handled? in axil module?)
@@ -174,7 +174,7 @@ module packet_filter_250 #(
     .s_axis_tuser_size (s_axis_adap_rx_250mhz_tuser_size),
     .s_axis_tuser_src  (s_axis_adap_rx_250mhz_tuser_src),
     .s_axis_tuser_dst  (s_axis_adap_rx_250mhz_tuser_dst),
-    .s_axis_tready     (s_axis_adap_rx_250mhz_tready[0]),      //potential conflict with headerpeek, so keep emmpty? 
+    .s_axis_tready     (),//s_axis_adap_rx_250mhz_tready[0]),      //potential conflict with headerpeek, so keep emmpty? 
 
     .decision_valid(header_valid),
     .decision_allow(allow),
